@@ -18,6 +18,10 @@
         {
             "name": "kraz2-door",
             "directions": 4
+        },
+        {
+            "name": "kraz1-rotating",
+            "directions": 1
         }
     ]
 }

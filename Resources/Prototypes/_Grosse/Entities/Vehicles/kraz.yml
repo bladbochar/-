@@ -1,7 +1,8 @@
 - type: entity
-  id: VehicleKraz17
-  name: КрАЗ
-  description: Военный грузовик, который всё ещё заводится. Три места в кабине.
+  id: BaseGrosseCar
+  abstract: true
+  name: автомобиль
+  description: Транспорт с физическим управлением.
   suffix: Vehicle
   components:
   - type: Transform
@@ -14,8 +15,8 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          # Sized to the south RSI frame (opaque ~1.44×3.78). The sprite is locked to South and rotated with the body, so this box turns with the truck.
-          bounds: "-0.8,-2.15,0.85,1.8"
+          # Bounds follow the locked South frame and rotate with the body.
+          bounds: "-0.75,-2.05,0.8,1.75"
         density: 400
         restitution: 0
         hard: true
@@ -64,10 +65,10 @@
         Blunt: 15
     selfDamage:
       types:
-        Blunt: 5
+        Blunt: 30
     wallDamage:
       types:
-        Blunt: 12
+        Blunt: 80
     slots:
     - id: driver
       name: grosse-car-slot-driver
@@ -127,10 +128,11 @@
     allowSelfRepair: false
   - type: Sprite
     sprite: _Grosse/rsi/Structures/Decoration/Transport/kraz.rsi
+    # A one-direction RSI state rotates with the physics body without cardinal corrections.
     noRot: false
     drawdepth: OverMobs
     layers:
-    - state: kraz1
+    - state: kraz1-rotating
       map: [ "enum.GrosseCarVisualLayers.Base" ]
   - type: Appearance
   - type: GenericVisualizer
@@ -184,6 +186,8 @@
   - type: ActionsContainer
   - type: Damageable
     damageModifierSet: Metallic
+  - type: ExaminableDamage
+    messages: ShieldMessages
   - type: Injurable
     damageContainer: Inorganic
   - type: Destructible
@@ -202,3 +206,9 @@
         - car-passenger2
       - !type:DoActsBehavior
         acts: ["Destruction"]
+
+- type: entity
+  id: VehicleKraz17
+  parent: BaseGrosseCar
+  name: КрАЗ
+  description: Военный грузовик, который всё ещё заводится. Три места в кабине.

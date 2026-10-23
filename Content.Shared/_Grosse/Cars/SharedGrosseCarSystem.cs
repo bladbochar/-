@@ -6,6 +6,7 @@ using Content.Shared.DragDrop;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Input;
 using Content.Shared.Instruments;
+using Content.Shared.Interaction.Components;
 using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Light;
 using Content.Shared.Light.Components;
@@ -425,14 +426,14 @@ public sealed partial class SharedGrosseCarSystem : EntitySystem
         Dirty(occupant, rider);
 
         if (slot.IsDriver)
-        {
             _mover.SetRelay(occupant, car.Owner);
 
-            foreach (var _ in _hands.EnumerateHands(occupant))
-            {
-                if (!_virtual.TrySpawnVirtualItemInHand(car.Owner, occupant, dropOthers: true, silent: true))
-                    break;
-            }
+        foreach (var _ in _hands.EnumerateHands(occupant))
+        {
+            if (!_virtual.TrySpawnVirtualItemInHand(car.Owner, occupant, out var virtualItem, dropOthers: true, silent: true))
+                break;
+
+            EnsureComp<UnremoveableComponent>(virtualItem.Value);
         }
 
         _blocker.UpdateCanMove(occupant);
@@ -464,10 +465,10 @@ public sealed partial class SharedGrosseCarSystem : EntitySystem
         if (slot.IsDriver)
         {
             RemComp<RelayInputMoverComponent>(occupant);
-            _virtual.DeleteInHandsMatching(occupant, car.Owner);
             _ui.CloseUi(car.Owner, InstrumentUiKey.Key, occupant);
         }
 
+        _virtual.DeleteInHandsMatching(occupant, car.Owner);
         RemComp<GrosseCarRiderComponent>(occupant);
         _blocker.UpdateCanMove(occupant);
 

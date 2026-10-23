@@ -68,7 +68,8 @@ public sealed partial class SharedGrosseCarSystem
         var dir = relVel / relSpeed;
         var mCar = Math.Max(args.OurBody.FixturesMass, 1f);
 
-        if (_mapGridQuery.HasComp(args.OtherEntity))
+        // Static structures absorb the impact; they must not be damaged or unanchored like loose props.
+        if (_mapGridQuery.HasComp(args.OtherEntity) || args.OtherBody.BodyType == BodyType.Static)
         {
             if (carSpeed >= ent.Comp.MinImpactSpeed)
                 HandleWall(ent, dir, relSpeed, mCar);

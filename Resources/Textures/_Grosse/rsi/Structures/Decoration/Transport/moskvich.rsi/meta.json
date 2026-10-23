@@ -26,6 +26,10 @@
     {
       "name": "copilotdoor",
       "directions": 4
+    },
+    {
+      "name": "m1-rotating",
+      "directions": 1
     }
   ]
 }
