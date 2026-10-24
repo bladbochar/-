@@ -3,7 +3,6 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
 using Content.Shared.DoAfter;
 using Content.Shared.DragDrop;
-using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Input;
 using Content.Shared.Instruments;
 using Content.Shared.Interaction.Components;
@@ -43,7 +42,6 @@ public sealed partial class SharedGrosseCarSystem : EntitySystem
     [Dependency] private SharedContainerSystem _container = default!;
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private SharedHandsSystem _hands = default!;
     [Dependency] private SharedMoverController _mover = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
@@ -180,7 +178,7 @@ public sealed partial class SharedGrosseCarSystem : EntitySystem
     private void OnVerbs(Entity<GrosseCarComponent> ent, ref GetVerbsEvent<Verb> args)
     {
         var user = args.User;
-        if (!TryComp<GrosseCarRiderComponent>(user, out var rider) || rider.Car != ent.Owner)
+        if (!TryComp<GrosseCarRiderComponent>(user, out var rider) || rider.Car != ent.Owner || rider.ControlsTurret)
             return;
 
         args.Verbs.Add(new Verb
