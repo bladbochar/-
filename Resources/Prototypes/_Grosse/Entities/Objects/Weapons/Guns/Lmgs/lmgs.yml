@@ -25,14 +25,15 @@
   - type: Item
     sprite: _Grosse/rsi/Objects/Weapons/Guns/pkd27.rsi
   - type: GrosseGunWieldBonus
-    cameraRecoilScalar: -4
+    cameraRecoilScalar: -5
+    kickMagnitudeMax: 8
   - type: GunWieldBonus
     minAngle: -30
-    maxAngle: -50
+    maxAngle: -31
   - type: Gun
     minAngle: 34
     maxAngle: 55
-    cameraRecoilScalar: 5
+    cameraRecoilScalar: 7
     fireRate: 5
     soundGunshot:
       path: /Audio/_Grosse/Weapons/Ranged/ak47.ogg

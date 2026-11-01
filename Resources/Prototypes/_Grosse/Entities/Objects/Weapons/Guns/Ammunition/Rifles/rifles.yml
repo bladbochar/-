@@ -18,17 +18,19 @@
   - type: Item
     sprite: _Grosse/rsi/Objects/Weapons/Guns/gunsx64/akms/tiny.rsi
   - type: GrosseGunWieldBonus
-    cameraRecoilScalar: -4
+    cameraRecoilScalar: -5
+    kickMagnitudeMax: 8
+
   - type: GunWieldBonus
     minAngle: -23
-    maxAngle: 0
+    maxAngle: -27
     angleIncrease: -3
   - type: Gun
     angleDecay: 30
     angleIncrease: 5
-    cameraRecoilScalar: 5
+    cameraRecoilScalar: 7
     minAngle: 24
-    maxAngle: 35
+    maxAngle: 45
     fireRate: 5
     soundGunshot:
       path: /Audio/_Grosse/Weapons/Ranged/ak47.ogg
@@ -84,15 +86,16 @@
     sprite: _Grosse/rsi/Objects/Weapons/Guns/gunsx64/aksu.rsi
     size: Large
   - type: GrosseGunWieldBonus
-    cameraRecoilScalar: -3.5
+    cameraRecoilScalar: -4.5
+    kickMagnitudeMax: 8
   - type: GunWieldBonus
     minAngle: -23
-    maxAngle: 0
+    maxAngle: -21
     angleIncrease: -2
   - type: Gun
     angleDecay: 25
     angleIncrease: 6
-    cameraRecoilScalar: 5
+    cameraRecoilScalar: 7
     minAngle: 24
     maxAngle: 45
     fireRate: 5

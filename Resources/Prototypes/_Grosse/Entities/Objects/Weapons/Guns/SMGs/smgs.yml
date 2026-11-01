@@ -17,7 +17,20 @@
   - type: Clothing
     sprite: _Grosse/rsi/hlstaff/weapon/smg/tiny.rsi
   - type: GunRequiresWield
+  - type: GrosseGunWieldBonus
+    cameraRecoilScalar: -2
+    kickMagnitudeMax: 6
+  # Preserve spread growth while wielded so short bursts remain more accurate.
+  - type: GunWieldBonus
+    minAngle: -8
+    maxAngle: -8
+    angleIncrease: -1
   - type: Gun
+    cameraRecoilScalar: 4
+    minAngle: 10
+    maxAngle: 26
+    angleIncrease: 4
+    angleDecay: 16
     soundGunshot:
       path: /Audio/_Grosse/Weapons/Ranged/smg1_fire1.ogg
   - type: ItemSlots

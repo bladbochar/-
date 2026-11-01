@@ -66,12 +66,16 @@
   - type: Clothing
     sprite: _Grosse/rsi/hlstaff/weapon/ar2/tiny.rsi
   - type: GrosseGunWieldBonus
-    cameraRecoilScalar: -4
+    cameraRecoilScalar: -5
+    kickMagnitudeMax: 8
   - type: GunWieldBonus
     minAngle: -23
-    maxAngle: -44
+    maxAngle: -29
+    angleIncrease: -2
   - type: Gun
-    cameraRecoilScalar: 5
+    angleIncrease: 5
+    angleDecay: 18
+    cameraRecoilScalar: 7
     minAngle: 24
     maxAngle: 45
     fireRate: 8
@@ -115,7 +119,8 @@
     shape:
     - 0,0,3,2
   - type: GrosseGunWieldBonus
-    cameraRecoilScalar: -4
+    cameraRecoilScalar: -5
+    kickMagnitudeMax: 8
   - type: GunWieldBonus
     minAngle: -43
     maxAngle: -43
@@ -124,7 +129,7 @@
     fireRate: 1
     selectedMode: SemiAuto
     angleDecay: 45
-    cameraRecoilScalar: 5
+    cameraRecoilScalar: 7
     minAngle: 44
     maxAngle: 45
     availableModes:
